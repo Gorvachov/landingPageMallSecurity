@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MallSecurity | Vigilancia Inteligente para Centros Comerciales</title>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="MallSecurityLogo.png" />
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet" />
+  <!-- Font Awesome for social icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-dP3W0Xh5vPorwGVOHQGTdzk6cbqx0n8ZuQefBcr6iHWmNQ5jRts1HT6Rt5eTQcdsjxVrUPrFyXw5JH+vtzT7sg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <style>
+    /* RESET */
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    body{font-family:'Montserrat',sans-serif;line-height:1.6;color:#24303F;background:#fff;}
+    img{max-width:100%;display:block;}
+
+    a{text-decoration:none;color:inherit;}
+    ul{list-style:none;}
+
+    :root{
+      --primary:#0b3558;
+      --primary-light:#0d466f;
+      --secondary:#19a2f8;
+      --gray:#f4f6f8;
+    }
+
+    header,section,footer{width:100%;}
+
+    .container{max-width:1180px;margin:0 auto;padding:0 1.25rem;}
+
+    /* NAVBAR */
+    .navbar{display:flex;justify-content:space-between;align-items:center;padding:1.5rem 0;}
+    .navbar .logo-wrapper{display:flex;align-items:center;gap:.5rem;}
+    .navbar .logo-wrapper img{width:42px;height:42px;}
+    .navbar .logo-wrapper span{font-size:1.5rem;font-weight:700;color:var(--primary);}
+    .navbar nav ul{display:flex;gap:1.5rem;font-weight:600;}
+    .navbar nav ul li a{padding:.25rem .5rem;border-radius:.25rem;transition:background-color .2s;}
+    .navbar nav ul li a:hover{background-color:rgba(25,162,248,.12);}
+
+    /* HERO */
+    .hero{position:relative;display:flex;align-items:center;justify-content:center;height:70vh;background:url('https://images.unsplash.com/photo-1515872071388-1b9f96ecf46d?auto=format&fit=crop&w=1600&q=60') center/cover no-repeat;}
+    .hero::after{content:'';position:absolute;inset:0;background:rgba(11,53,88,.55);}
+    .hero .content{position:relative;z-index:1;text-align:center;color:#fff;max-width:760px;padding:0 1rem;}
+    .hero h1{font-size:2.75rem;margin-bottom:1rem;}
+    .hero p{font-size:1.125rem;margin-bottom:2rem;}
+    .hero button{cursor:pointer;border:none;background:var(--secondary);color:#fff;padding:1rem 2rem;border-radius:8px;font-size:1rem;font-weight:600;transition:background .25s;}
+    .hero button:hover{background:#0286d1;}
+
+    /* FEATURES */
+    .features{background:var(--gray);padding:4.5rem 0;text-align:center;}
+    .features h2{font-size:2rem;margin-bottom:2.5rem;color:var(--primary);}
+    .features-grid{display:grid;gap:2rem;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));}
+    .feature-item{background:#fff;padding:2rem;border-radius:10px;box-shadow:0 3px 12px rgba(0,0,0,.05);}
+    .feature-item h3{color:var(--primary);margin-bottom:.75rem;font-size:1.25rem;}
+    .feature-item p{color:#555;font-size:.95rem;}
+
+    /* LOGIN */
+    .login{padding:4.5rem 0;display:flex;justify-content:center;align-items:center;background:#fff;}
+    .login-card{background:#fff;border:1px solid #e3eaf0;border-radius:12px;box-shadow:0 4px 15px rgba(0,0,0,.06);padding:2.5rem;width:100%;max-width:420px;text-align:center;}
+    .login-card h2{margin-bottom:1.5rem;color:var(--primary);}
+    .login-card form{display:flex;flex-direction:column;gap:1.25rem;}
+    .login-card input{padding:.85rem 1rem;border:1px solid #cdd7e1;border-radius:6px;font-size:1rem;}
+    .login-card button{padding:.9rem 1rem;background:var(--primary);color:#fff;border:none;border-radius:8px;font-size:1rem;font-weight:600;cursor:pointer;transition:background .25s;}
+    .login-card button:hover{background:var(--primary-light);}
+    .login-card .small-link{font-size:.85rem;color:var(--secondary);margin-top:.75rem;}
+
+    /* CTA */
+    .cta{background:var(--primary);color:#fff;text-align:center;padding:4rem 1rem;}
+    .cta h2{font-size:2rem;margin-bottom:1rem;}
+    .cta p{font-size:1rem;margin-bottom:2rem;}
+    .cta button{background:#fff;color:var(--primary);padding:1rem 2rem;border:none;border-radius:8px;font-size:1rem;font-weight:700;cursor:pointer;transition:opacity .25s;}
+    .cta button:hover{opacity:.85;}
+
+    /* FOOTER */
+    footer{background:#101820;color:#e4e4e4;padding:3rem 0;font-size:.95rem;}
+    .footer-top{display:flex;flex-wrap:wrap;justify-content:space-between;gap:2.5rem;margin-bottom:2rem;}
+    .footer-logo{display:flex;align-items:center;gap:.75rem;}
+    .footer-logo img{width:52px;height:52px;}
+    .footer-logo span{font-size:1.35rem;font-weight:700;}
+    .footer-col{min-width:160px;flex:1;}
+    .footer-col h4{margin-bottom:1rem;color:#fff;font-size:1.1rem;}
+    .footer-col ul{display:flex;flex-direction:column;gap:.4rem;}
+    .footer-col ul li a{color:#e4e4e4;transition:color .2s;}
+    .footer-col ul li a:hover{color:var(--secondary);}
+    .social-links{display:flex;gap:1rem;margin-top:.75rem;}
+    .social-links a{font-size:1.25rem;display:inline-block;transition:color .2s;}
+    .social-links a:hover{color:var(--secondary);}
+    .footer-bottom{text-align:center;border-top:1px solid #2a3745;padding-top:1.5rem;display:flex;flex-direction:column;gap:.75rem;}
+    .footer-bottom small{font-size:.8rem;}
+
+    /* MEDIA */
+    @media(min-width:768px){
+      .hero h1{font-size:3.25rem}
+      .hero p{font-size:1.25rem}
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="container navbar">
+    <div class="logo-wrapper">
+      <img src="MallSecurityLogo.png" alt="MallSecurity logo" />
+      <span>MallSecurity</span>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="#features">Soluciones</a></li>
+        <li><a href="#login">Login</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <div class="content">
+      <h1>Vigilancia Inteligente para Centros Comerciales</h1>
+      <p>Protege tus instalaciones, colaboradores y clientes con monitoreo 24/7 y análisis en tiempo real.</p>
+      <button onclick="document.getElementById('login').scrollIntoView({behavior:'smooth'})">Accede a tu Panel</button>
+    </div>
+  </section>
+
+  <!-- FEATURES -->
+  <section class="features" id="features">
+    <div class="container">
+      <h2>Nuestras Soluciones de Seguridad</h2>
+      <div class="features-grid">
+        <div class="feature-item">
+          <h3>CCTV Inteligente</h3>
+          <p>Cámaras con detección de movimiento, para monitoreo y notificaciones inmediatas.</p>
+        </div>
+        <div class="feature-item">
+          <h3>Control de Acceso</h3>
+          <p>Sistemas de control mediante tarjetas RFID, facilita la gestión  de entradas y salidas del personal.</p>
+        </div>
+        <div class="feature-item">
+          <h3>Detección de Incidentes</h3>
+          <p>Alertas automáticas ante incendios, humo o eventos anómalos en áreas críticas.</p>
+        </div>
+        <div class="feature-item">
+          <h3>Monitoreo Continuo</h3>
+          <p>Centro de control con supervisión remota em horarios clave.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LOGIN -->
+  <section class="login" id="login">
+    <div class="login-card">
+      <h2>Iniciar Sesión</h2>
+      <form action="#" method="post">
+        <input type="email" name="email" placeholder="Correo Electrónico" required />
+        <input type="password" name="password" placeholder="Contraseña" required />
+        <button type="submit">Entrar</button>
+      </form>
+      <a href="#" class="small-link">¿Olvidaste tu contraseña?</a>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta">
+    <div class="container">
+      <h2>¿Aún no eres cliente?</h2>
+      <p>Contacta a nuestro equipo y solicita una demostración gratuita de MallSecurity en tu centro comercial.</p>
+      <button onclick="document.getElementById('contacto').scrollIntoView({behavior:'smooth'})">Contáctanos</button>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container footer-top">
+      <div class="footer-logo">
+        <img src="MallSecurityLogo.png" alt="MallSecurity logo" />
+        <span>MallSecurity</span>
+      </div>
+      <div class="footer-col">
+        <h4>Nosotros</h4>
+        <ul>
+          <li><a href="#">Quiénes Somos</a></li>
+          <li><a href="#">Nuestro Equipo</a></li>
+          <li><a href="#">Carreras</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Soluciones</h4>
+        <ul>
+          <li><a href="#">CCTV Inteligente</a></li>
+          <li><a href="#">Control de Acceso</a></li>
+          <li><a href="#">Detección de Incidentes</a></li>
+          <li><a href="#">Monitoreo</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Legal</h4>
+        <ul>
+          <li><a href="#">Privacidad</a></li>
+          <li><a href="#">Aviso Legal</a></li>
+          <li><a href="#">Términos de Uso</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contáctanos</h4>
+        <ul>
+          <li><a href="mailto:info@mallsecurity.com">info@mallsecurity.com</a></li>
+          <li><a href="tel:+51123456789">+51 123 456 789</a></li>
+          <li><a href="#">Soporte</a></li>
+        </ul>
+        <div class="social-links">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <small>© 2025 MallSecurity. Todos los derechos reservados.</small>
+      <small><a href="#">Política de Privacidad</a> | <a href="#">Aviso Legal</a></small>
+    </div>
+  </footer>
+
+</body>
+</html>
